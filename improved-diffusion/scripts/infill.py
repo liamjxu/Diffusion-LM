@@ -336,7 +336,7 @@ def main():
                         control_label_lst.append(json.loads(line))
                 # print(control_label_lst[:1])
                 control_constraints = []
-                for label_class_dict in control_label_lst[100:]:
+                for label_class_dict in control_label_lst:
                     padded_chart = th.LongTensor(label_class_dict['padded_chart'])
                     words_ = label_class_dict['words_']
                     label_ids = padded_chart
