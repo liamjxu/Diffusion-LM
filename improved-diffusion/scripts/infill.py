@@ -148,7 +148,7 @@ def main():
                 model_control = Classifier_GPT2.from_pretrained('predictability/diff_models/e2e-back_e=6_b=10_m=gpt2_wikitext-103-raw-v1_101_wp_full_multi16_t_aware').cuda()
 
                 control_label_lst = []
-                with open('diffusion_lm/improved-diffusion/control_gen/target_attribute.json', 'r') as controlf:
+                with open('improved-diffusion/control_gen/target_attribute.json', 'r') as controlf:
                     for line in controlf:
                         control_label_lst.append(json.loads(line))
                 # print(control_label_lst[:5])
@@ -253,7 +253,7 @@ def main():
 
                 ################33
                 control_label_lst = []
-                with open('diffusion_lm/improved-diffusion/control_gen/target_pos.json', 'r') as controlf:
+                with open('improved-diffusion/control_gen/target_pos.json', 'r') as controlf:
                     for line in controlf:
                         control_label_lst.append(json.loads(line))
                 print(control_label_lst[:5])
@@ -330,7 +330,7 @@ def main():
 
                 ###############
                 control_label_lst = []
-                with open('diffusion_lm/improved-diffusion/control_gen/target_tree.json',
+                with open('improved-diffusion/control_gen/target_tree.json',
                           'r') as controlf:
                     for line in controlf:
                         control_label_lst.append(json.loads(line))
@@ -364,7 +364,7 @@ def main():
 
                 ###############
                 control_label_lst = []
-                with open('diffusion_lm/improved-diffusion/control_gen/target_spans.json',
+                with open('improved-diffusion/control_gen/target_spans.json',
                           'r') as controlf:
                     for line in controlf:
                         control_label_lst.append(json.loads(line))
@@ -717,7 +717,7 @@ def main():
 def create_argparser():
     defaults = dict(
         data_dir="", clip_denoised=False, use_ddim=False, eta=1.0, num_samples=50, batch_size=1, model_path="",
-        out_dir="diffusion_lm/improved_diffusion/out_gen",
+        out_dir="improved_diffusion/out_gen",
         emb_scale_factor=1.0, split='train', debug_path='', eval_task_='infill',
         partial_seq="", partial_seq_file="", verbose='yes', tgt_len=15, t_merge=200, interp_coef=0.5, notes='',
         start_idx=0, end_idx=0,
@@ -736,7 +736,7 @@ def create_argparser():
 #         model_path="",
 #         model_arch='conv-unet',
 #         verbose='yes',
-#         out_dir="diffusion_lm/improved_diffusion/out_gen",
+#         out_dir="improved_diffusion/out_gen",
 #         partial_seq=""
 #     )
 #     text_defaults = dict(modality='text',
