@@ -1679,11 +1679,7 @@ class Classifier_GPT2(GPT2PreTrainedModel):
             input_embs = self.transformer.wte(input_ids)  # input_embs
 
         if self.diffusion is not None:
-            print('\n\nhere1\n\n')
-            print(f'self.train_diff_steps: ({self.train_diff_steps})')
-            print('t: ', t)
             if self.train_diff_steps > 0 and t is None:
-                print('\n\nhere2\n\n')
                 # sample t
                 t = torch.randint(-1, self.train_diff_steps, (input_embs.shape[0],)).to(input_embs.device)
                 t_mask = (t >= 0)
@@ -1699,17 +1695,11 @@ class Classifier_GPT2(GPT2PreTrainedModel):
                 # print(input_embs.shape, t[:3])
                 # print(self.time_embeddings, t)
                 # time_emb = self.time_embeddings(t).unsqueeze(1)
-                print(f'input_embs: ({input_embs})')
-                print(f'input_embs_rand: ({input_embs_rand})')
-                print(f'time_emb: ({time_emb})')
 
         if self.diffusion is None and t is not None:
-            print('\n\nhere3\n\n')
             # print(t, input_embs.shape, 'should see this')
             t = torch.LongTensor([t]).expand(input_embs.size(0)).to(self.device)
             time_emb = self.time_embeddings(t).unsqueeze(1)
-        print('\n\nhere4\n\n')
-        print(time_emb)
         input_embs = self.up_proj(input_embs)
         if t_aware:
             input_embs = torch.cat([time_emb, input_embs], dim=1)
