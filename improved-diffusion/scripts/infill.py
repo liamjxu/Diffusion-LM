@@ -145,7 +145,8 @@ def main():
                 encoded_partial_seq[0][args.tgt_len] = tokens2id['END']
 
             if args.eval_task_ == 'control_attribute':
-                model_control = Classifier_GPT2.from_pretrained('predictability/diff_models/e2e-back_e=6_b=10_m=gpt2_wikitext-103-raw-v1_101_wp_full_multi16_t_aware').cuda()
+                # model_control = Classifier_GPT2.from_pretrained('predictability/diff_models/e2e-back_e=6_b=10_m=gpt2_wikitext-103-raw-v1_101_wp_full_multi16_t_aware').cuda()
+                model_control = Classifier_GPT2.from_pretrained('classifier_models/e2e-tgt-tree_e=6_b=10_m=bert-base-uncased_wikitext-103-raw-v1_101_wp_None').cuda()
 
                 control_label_lst = []
                 with open('improved-diffusion/control_gen/target_attribute.json', 'r') as controlf:
@@ -163,7 +164,8 @@ def main():
                     control_constraints.append((langevin_fn_selected, label_class))
 
                 partial_seq = control_constraints
-                # print(control_constraints)
+                print('\n\ncontrol constraints:\n\n')
+                print(control_constraints)
                 encoded_partial_seq = [encoded_partial_seq[0] for _ in range(len(partial_seq))]
                 assert len(partial_seq) == len(encoded_partial_seq)
                 print(f'RUNNING FOR {len(partial_seq)} constraints.', '*-'*20)
