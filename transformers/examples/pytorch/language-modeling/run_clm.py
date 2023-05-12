@@ -892,6 +892,8 @@ def main():
             if model_args.experiment == 'e2e-back_t2':
                 model = Classifier_Times(config=config, diffusion=diffusion,)
             elif model_args.experiment == 'e2e-back':
+                print(f'\n\nconfig:{config}\n\n')
+                print(f'\n\ndiffusion:{diffusion}\n\n')                
                 model = Classifier_GPT2(config=config, diffusion=diffusion,)
             elif model_args.experiment == 'e2e-tgt-pos':
                 config.pos_vocab_size = len(pos_vocab)
