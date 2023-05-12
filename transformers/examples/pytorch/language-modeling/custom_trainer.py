@@ -1680,7 +1680,7 @@ class Classifier_GPT2(GPT2PreTrainedModel):
 
         if self.diffusion is not None:
             print('\n\nhere1\n\n')
-            print('train_diff_steps: ', self.train_diff_steps)
+            print(f'self.train_diff_steps: ({self.train_diff_steps})')
             print('t: ', t)
             if self.train_diff_steps > 0 and t is None:
                 print('\n\nhere2\n\n')
@@ -1699,7 +1699,9 @@ class Classifier_GPT2(GPT2PreTrainedModel):
                 # print(input_embs.shape, t[:3])
                 # print(self.time_embeddings, t)
                 # time_emb = self.time_embeddings(t).unsqueeze(1)
-                print(time_emb)
+                print(f'input_embs: ({input_embs})')
+                print(f'input_embs_rand: ({input_embs_rand})')
+                print(f'time_emb: ({time_emb})')
 
         if self.diffusion is None and t is not None:
             print('\n\nhere3\n\n')
