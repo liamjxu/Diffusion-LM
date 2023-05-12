@@ -1699,6 +1699,7 @@ class Classifier_GPT2(GPT2PreTrainedModel):
                 # print(input_embs.shape, t[:3])
                 # print(self.time_embeddings, t)
                 # time_emb = self.time_embeddings(t).unsqueeze(1)
+                print(time_emb)
 
         if self.diffusion is None and t is not None:
             print('\n\nhere3\n\n')
@@ -1706,6 +1707,7 @@ class Classifier_GPT2(GPT2PreTrainedModel):
             t = torch.LongTensor([t]).expand(input_embs.size(0)).to(self.device)
             time_emb = self.time_embeddings(t).unsqueeze(1)
         print('\n\nhere4\n\n')
+        print(time_emb)
         input_embs = self.up_proj(input_embs)
         if t_aware:
             input_embs = torch.cat([time_emb, input_embs], dim=1)
