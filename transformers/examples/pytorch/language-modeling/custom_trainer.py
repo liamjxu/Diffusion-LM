@@ -1663,7 +1663,7 @@ class Classifier_GPT2(GPT2PreTrainedModel):
             output_attentions=None,
             output_hidden_states=None,
             return_dict=None,
-            t = 200,
+            t=None,
             t_aware=True,
     ):
         r"""
